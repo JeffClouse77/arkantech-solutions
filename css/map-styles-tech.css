@@ -1,0 +1,661 @@
+/* Arkansas Tech Map Styles - Enhanced Professional Version */
+.arkansas-map-container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    background: linear-gradient(135deg, rgba(45,91,127,0.15) 0%, rgba(70,130,180,0.15) 100%);
+    border-radius: 16px;
+    padding: 2.5rem;
+    box-shadow: 
+        0 10px 30px rgba(0,0,0,0.15),
+        0 1px 0 rgba(255,255,255,0.1) inset,
+        0 -1px 0 rgba(0,0,0,0.1) inset;
+    overflow: hidden;
+}
+
+.arkansas-map-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        linear-gradient(45deg, rgba(255,255,255,0.03) 25%, transparent 25%),
+        linear-gradient(135deg, rgba(255,255,255,0.03) 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, rgba(255,255,255,0.03) 75%),
+        linear-gradient(135deg, transparent 75%, rgba(255,255,255,0.03) 75%);
+    background-size: 25px 25px;
+    background-position: 0 0, 0 12.5px, 12.5px -12.5px, -12.5px 0px;
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+/* SVG Base Styles */
+.arkansas-map {
+    width: 100%;
+    height: auto;
+    max-width: 600px;
+    margin: 0 auto;
+    display: block;
+    filter: drop-shadow(0px 3px 5px rgba(0,0,0,0.2));
+    transition: all 0.5s ease-in-out;
+}
+
+/* Override styles to ensure proper display */
+.arkansas-map svg {
+    width: 100%;
+    height: auto;
+}
+
+.state-outline {
+    fill: url(#countyLines);
+    stroke: #2D5B7F;
+    stroke-width: 2px;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+}
+
+.region {
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    stroke: rgba(255,255,255,0.5);
+    stroke-width: 0.75;
+    stroke-opacity: 0.5;
+}
+
+.region:hover {
+    transform: translateY(-3px);
+    filter: brightness(1.15) drop-shadow(0 5px 15px rgba(0,0,0,0.3));
+    stroke-width: 1.5;
+    stroke-opacity: 1;
+}
+
+.region:active {
+    transform: translateY(-1px);
+    filter: brightness(1.05) drop-shadow(0 2px 5px rgba(0,0,0,0.2));
+    transition: all 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* State Outline Enhancement */
+.state-outline {
+    transition: all 0.5s ease-in-out;
+}
+
+/* Region Entrance Animations with Sequence */
+.regions {
+    animation: fadeIn 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    animation-delay: 0.5s;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Staggered Element Animations with enhanced timing */
+.topography {
+    animation: fadeIn 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    animation-delay: 1.2s;
+    will-change: opacity, transform;
+    opacity: 1;
+}
+
+.rivers {
+    animation: fadeIn 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    animation-delay: 1.8s;
+    will-change: opacity, transform;
+    opacity: 1;
+}
+
+.cities {
+    animation: fadeIn 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    animation-delay: 2.4s;
+    will-change: opacity, transform;
+}
+
+.hex-codes {
+    animation: fadeIn 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    animation-delay: 3s;
+}
+
+/* River Animation with enhanced flow effect */
+.river {
+    stroke-dasharray: 8 3;
+    animation: flowRiver 30s linear infinite;
+    will-change: stroke-dashoffset;
+}
+
+@keyframes flowRiver {
+    from {
+        stroke-dashoffset: 200;
+    }
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+/* Topographical Lines Drawing Animation */
+.topo-line {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: drawLine 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    animation-delay: 1.5s;
+    will-change: stroke-dashoffset;
+    opacity: 0.7;
+}
+
+@keyframes drawLine {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+/* City Marker Pulse with enhanced visual effect */
+.city-marker {
+    animation: pulse 3s ease-in-out infinite;
+    filter: url(#cityGlow);
+    transform-origin: center;
+    transform-box: fill-box;
+    will-change: transform, opacity;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.3);
+        opacity: 0.7;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* City Labels with improved visibility */
+.city-label {
+    font-size: 12px;
+    fill: #FFFFFF;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-weight: 600;
+    opacity: 1;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+    pointer-events: none;
+}
+
+.city-marker:hover + .city-label {
+    transform: translateY(-2px);
+    fill: #3498DB;
+    transition: all 0.3s ease;
+}
+
+/* Tech Pattern Overlay Animation */
+.tech-overlay {
+    animation: fadeInTech 2.5s ease-in-out forwards;
+    animation-delay: 0.8s;
+}
+
+@keyframes fadeInTech {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 0.15;
+    }
+}
+
+/* Info Panel with Glass Morphism Effect */
+.map-info-panel {
+    position: absolute;
+    top: 50%;
+    right: -320px;
+    width: 320px;
+    background: rgba(45,91,127,0.9);
+    border-radius: 16px;
+    padding: 1.75rem;
+    color: white;
+    transform: translateY(-50%);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 
+        0 8px 32px rgba(0,0,0,0.3),
+        0 0 0 1px rgba(255,255,255,0.1) inset;
+    overflow: hidden;
+    z-index: 10;
+}
+
+.map-info-panel::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.1), transparent);
+    opacity: 0.5;
+    border-radius: 16px 16px 0 0;
+}
+
+.map-info-panel.active {
+    right: 20px;
+    opacity: 1;
+    pointer-events: all;
+    transform: translateY(-50%);
+}
+
+.info-panel-title {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    color: #FFFFFF;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    padding-bottom: 0.75rem;
+    position: relative;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.info-panel-title::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: #4682B4;
+    border-radius: 1.5px;
+}
+
+.info-panel-content {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.info-panel-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+    margin-top: 1.5rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid rgba(255,255,255,0.15);
+}
+
+.stat-item {
+    text-align: center;
+    background: rgba(0,0,0,0.1);
+    padding: 0.75rem;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.stat-item:hover {
+    transform: translateY(-3px);
+    background: rgba(0,0,0,0.2);
+}
+
+.stat-value {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #FFFFFF;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    margin-bottom: 0.25rem;
+}
+
+.stat-label {
+    font-size: 0.8rem;
+    opacity: 0.8;
+    font-weight: 500;
+}
+
+/* Region Highlight while info panel is open */
+.region.active {
+    filter: url(#regionGlow);
+    transform: translateY(-3px);
+}
+
+/* Responsive Adjustments with improved mobile experience */
+@media (max-width: 1200px) {
+    .map-info-panel {
+        position: fixed;
+        top: auto;
+        right: 1rem;
+        bottom: 1rem;
+        transform: none;
+        width: calc(100% - 2rem);
+        max-width: 420px;
+    }
+    
+    .map-info-panel.active {
+        transform: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .arkansas-map-container {
+        padding: 1.5rem;
+        margin: 1rem auto;
+        border-radius: 12px;
+    }
+
+    .city-label {
+        font-size: 10px;
+    }
+
+    .map-info-panel {
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        max-width: none;
+        border-radius: 16px 16px 0 0;
+        padding: 1.5rem;
+    }
+    
+    .info-panel-title {
+        font-size: 1.25rem;
+    }
+    
+    .info-panel-stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
+    }
+    
+    .stat-value {
+        font-size: 1.25rem;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .arkansas-map-container {
+        box-shadow: none;
+        background: none;
+        padding: 0;
+    }
+    
+    .arkansas-map-container::before {
+        display: none;
+    }
+
+    .region:hover {
+        transform: none;
+        filter: none;
+    }
+
+    .city-marker {
+        animation: none;
+    }
+
+    .river {
+        animation: none;
+        stroke-dasharray: none;
+    }
+    
+    .topo-line {
+        animation: none;
+        stroke-dashoffset: 0;
+    }
+}
+
+/* Accessibility */
+.region:focus {
+    outline: none;
+    filter: brightness(1.2);
+}
+
+.region:focus-visible {
+    outline: 2px solid #FFFFFF;
+    outline-offset: 4px;
+}
+
+/* Reduced Motion Preferences */
+@media (prefers-reduced-motion) {
+    .region, .city-marker, .river, .topo-line {
+        animation: fadeIn 0.5s ease forwards;
+        transition: opacity 0.3s ease;
+    }
+    
+    .region:hover {
+        transform: none;
+    }
+    
+    .city-marker {
+        animation: none;
+    }
+    
+    .river {
+        animation: none;
+        stroke-dasharray: none;
+    }
+    
+    .topo-line {
+        animation: none;
+        stroke-dashoffset: 0;
+    }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+    .region {
+        stroke: #000000;
+        stroke-width: 2;
+    }
+
+    .city-marker {
+        stroke: #000000;
+        stroke-width: 3;
+    }
+    
+    .topo-line {
+        stroke: #FFFFFF;
+        stroke-width: 1.5;
+    }
+    
+    .river {
+        stroke: #0000FF;
+        stroke-width: 2;
+    }
+}
+
+/* Info Panel Close Button */
+.info-panel-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: rgba(255,255,255,0.7);
+    cursor: pointer;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+    z-index: 5;
+}
+
+.info-panel-close:hover {
+    color: #FFFFFF;
+    background: rgba(0,0,0,0.2);
+    transform: rotate(90deg);
+}
+
+/* Highlights Section in Info Panel */
+.highlights-section {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255,255,255,0.15);
+    grid-column: 1 / -1;
+}
+
+.highlights-list {
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0 0;
+}
+
+.highlights-list li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    opacity: 0.9;
+    line-height: 1.5;
+}
+
+.highlights-list li:before {
+    content: '•';
+    position: absolute;
+    left: 0.5rem;
+    color: #4682B4;
+    font-weight: bold;
+}
+
+/* Click Ripple Effect */
+.map-ripple-effect {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.4);
+    transform: scale(0);
+    animation: ripple 0.8s ease-out;
+    pointer-events: none;
+    width: 120px;
+    height: 120px;
+    margin-left: -60px;
+    margin-top: -60px;
+    z-index: 10;
+    opacity: 0.7;
+}
+
+@keyframes ripple {
+    from {
+        transform: scale(0);
+        opacity: 0.7;
+    }
+    to {
+        transform: scale(1);
+        opacity: 0;
+    }
+}
+
+/* City Tooltip */
+.city-tooltip {
+    position: fixed;
+    background: rgba(45,91,127,0.95);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+    pointer-events: none;
+    z-index: 1000;
+    transform: translate(-50%, -100%) scale(0.8);
+    transform-origin: bottom center;
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.city-tooltip.active {
+    opacity: 1;
+    transform: translate(-50%, calc(-100% - 10px)) scale(1);
+}
+
+.city-tooltip:after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    margin-left: -5px;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid rgba(45,91,127,0.95);
+}
+
+/* Map Loading Animation */
+.arkansas-map-container:not(.map-loaded)::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    background-size: 200% 100%;
+    animation: mapLoadingShimmer 1.5s infinite;
+    pointer-events: none;
+}
+
+@keyframes mapLoadingShimmer {
+    0% {
+        background-position: -200% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+/* Touch-specific styles */
+.touch-device .region {
+    transition: all 0.4s ease;
+}
+
+.touch-device .region.touch-active {
+    filter: brightness(1.2) drop-shadow(0 5px 15px rgba(0,0,0,0.3));
+}
+
+.touch-device .city-marker {
+    transform-origin: center;
+    transition: transform 0.3s ease;
+}
+
+.touch-device .city-marker.touch-active {
+    transform: scale(1.5);
+    animation: none;
+}
+
+/* Animation pause when scrolling for performance */
+.scrolling .river,
+.scrolling .city-marker {
+    animation-play-state: paused;
+}
+
+/* State-specific styling for info panel */
+.map-info-panel.region-northwest {
+    background: linear-gradient(135deg, rgba(45,91,127,0.95) 0%, rgba(45,91,127,0.85) 100%);
+    border-left: 3px solid #1a5484;
+}
+
+.map-info-panel.region-northeast {
+    background: linear-gradient(135deg, rgba(52,152,219,0.95) 0%, rgba(52,152,219,0.85) 100%);
+    border-left: 3px solid #3498DB;
+}
+
+.map-info-panel.region-central {
+    background: linear-gradient(135deg, rgba(44,110,161,0.95) 0%, rgba(44,110,161,0.85) 100%);
+    border-left: 3px solid #2C6EA1;
+}
+
+.map-info-panel.region-southwest {
+    background: linear-gradient(135deg, rgba(58,107,146,0.95) 0%, rgba(58,107,146,0.85) 100%);
+    border-left: 3px solid #3a6b92;
+}
+
+.map-info-panel.region-southeast {
+    background: linear-gradient(135deg, rgba(45,109,167,0.95) 0%, rgba(45,109,167,0.85) 100%);
+    border-left: 3px solid #2D6DA7;
+} 

@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArkanTech Solutions - IT Consulting in Arkansas</title>
+    <meta name="description" content="Leading IT consulting firm in Arkansas providing market research, web development, AI adoption, and process optimization services.">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/map-styles.css">
+    <link rel="stylesheet" href="css/map-styles-tech.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Progress Bar -->
+    <div class="progress-bar">
+        <div class="progress-fill"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="images/logo.svg" alt="ArkanTech Solutions" class="nav-logo-img">
+                <span class="nav-logo-text">
+                    <span>ArkanTech</span>
+                    <span class="solutions">Solutions</span>
+                </span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="services.html" class="nav-link">Services</a></li>
+                <li><a href="case-studies.html" class="nav-link">Case Studies</a></li>
+                <li><a href="blog.html" class="nav-link">Blog</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <h1 class="brutalist-heading">Transform Your Business Through Technology</h1>
+                <p class="mb-2">Expert IT consulting services for forward-thinking companies</p>
+                <a href="contact.html" class="btn btn-secondary">Get Started</a>
+            </div>
+            <div class="hero-visual">
+                <div class="logo-container">
+                    <img src="images/logo.svg" alt="ArkanTech Solutions" class="hero-logo">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Overview -->
+    <section class="section parallax-section">
+        <div class="parallax-bg" style="background-image: url('images/tech-pattern.svg');"></div>
+        <div class="container parallax-content">
+            <h2 class="text-center mb-2">Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <i class="fas fa-chart-line fa-3x mb-1" style="color: var(--accent-blue)"></i>
+                    <h3>Market Research</h3>
+                    <p>Data-driven insights to help your business make informed decisions and stay ahead of the competition.</p>
+                    <a href="services.html#market-research" class="btn btn-primary mt-1">Learn More</a>
+                </div>
+                <div class="service-card fade-in">
+                    <i class="fas fa-globe fa-3x mb-1" style="color: var(--accent-blue)"></i>
+                    <h3>Online Presence</h3>
+                    <p>Establish and enhance your digital footprint with strategic online presence management.</p>
+                    <a href="services.html#online-presence" class="btn btn-primary mt-1">Learn More</a>
+                </div>
+                <div class="service-card fade-in">
+                    <i class="fas fa-code fa-3x mb-1" style="color: var(--accent-blue)"></i>
+                    <h3>Web Development</h3>
+                    <p>Custom web solutions built with modern technologies to drive your business forward.</p>
+                    <a href="services.html#web-development" class="btn btn-primary mt-1">Learn More</a>
+                </div>
+                <div class="service-card fade-in">
+                    <i class="fas fa-robot fa-3x mb-1" style="color: var(--accent-blue)"></i>
+                    <h3>AI Adoption</h3>
+                    <p>Integrate AI solutions into your business processes with expert guidance and training.</p>
+                    <a href="services.html#ai-adoption" class="btn btn-primary mt-1">Learn More</a>
+                </div>
+                <div class="service-card fade-in">
+                    <i class="fas fa-cogs fa-3x mb-1" style="color: var(--accent-blue)"></i>
+                    <h3>Process Optimization</h3>
+                    <p>Streamline your operations and maximize efficiency with our optimization expertise.</p>
+                    <a href="services.html#process-optimization" class="btn btn-primary mt-1">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="testimonials-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Success Stories</h2>
+                <p>See how we've helped businesses across Arkansas thrive in the digital age</p>
+            </div>
+            
+            <div class="testimonial-slider">
+                <div class="empty-testimonials-message">
+                    <h3>Be the First to Share Your Success</h3>
+                    <p>We're building a community of Arkansas businesses that have achieved digital transformation success. Would you like to share your story and inspire others?</p>
+                    <button class="btn share-story-btn">Share Your Success Story</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Story Capture Modal -->
+    <div id="storyCaptureModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Share Your Success Story</h3>
+                <span class="close-modal">&times;</span>
+            </div>
+            
+            <div class="modal-body">
+                <div class="progress-bar">
+                    <div class="progress-step active" data-step="1"></div>
+                    <div class="progress-line"></div>
+                    <div class="progress-step" data-step="2"></div>
+                    <div class="progress-line"></div>
+                    <div class="progress-step" data-step="3"></div>
+                </div>
+                
+                <form id="storyCaptureForm" action="submit_testimonial.php" method="post" enctype="multipart/form-data">
+                    <div class="capture-step active" data-step="1">
+                        <h4>Basic Information</h4>
+                        
+                        <div class="form-group">
+                            <label for="clientName">Your Name *</label>
+                            <input type="text" id="clientName" name="clientName" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="clientEmail">Email Address *</label>
+                            <input type="email" id="clientEmail" name="clientEmail" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="companyName">Company Name *</label>
+                            <input type="text" id="companyName" name="companyName" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="industry">Industry</label>
+                            <select id="industry" name="industry">
+                                <option value="">Select Industry</option>
+                                <option value="Retail">Retail</option>
+                                <option value="Manufacturing">Manufacturing</option>
+                                <option value="Healthcare">Healthcare</option>
+                                <option value="Agriculture">Agriculture</option>
+                                <option value="Technology">Technology</option>
+                                <option value="Education">Education</option>
+                                <option value="Government">Government</option>
+                                <option value="Hospitality">Hospitality</option>
+                                <option value="Financial">Financial Services</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="location">Location (City)</label>
+                            <input type="text" id="location" name="location" placeholder="Little Rock, Fayetteville, etc.">
+                        </div>
+                    </div>
+                    
+                    <div class="capture-step" data-step="2">
+                        <h4>Your Success Story</h4>
+                        
+                        <div class="form-group">
+                            <label for="storyText">Share Your Experience with ArkanTech Solutions *</label>
+                            <textarea id="storyText" name="storyText" rows="6" required placeholder="Tell us about your experience working with us, challenges you faced, and the results you achieved..."></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Which Services Did You Use?</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" name="servicesUsed[]" value="Web Development"> Web Development</label>
+                                <label><input type="checkbox" name="servicesUsed[]" value="Online Presence"> Online Presence</label>
+                                <label><input type="checkbox" name="servicesUsed[]" value="AI Education & Optimization"> AI Education & Optimization</label>
+                                <label><input type="checkbox" name="servicesUsed[]" value="Software Development"> Software Development</label>
+                                <label><input type="checkbox" name="servicesUsed[]" value="Data Analytics & Market Research"> Data Analytics & Market Research</label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="metrics">Key Improvements</label>
+                            <input type="text" id="metrics" name="metrics" placeholder="e.g., 30% increase in online sales, 2x productivity, etc.">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Overall Rating</label>
+                            <select id="rating" name="rating" class="rating-select">
+                                <option value="5">5 - Exceptional</option>
+                                <option value="4">4 - Very Good</option>
+                                <option value="3">3 - Satisfactory</option>
+                                <option value="2">2 - Needs Improvement</option>
+                                <option value="1">1 - Poor</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="capture-step" data-step="3">
+                        <h4>Final Details</h4>
+                        
+                        <div class="form-group">
+                            <label for="clientPhoto">Professional Photo (Optional)</label>
+                            <input type="file" id="clientPhoto" name="clientPhoto" accept="image/jpeg, image/png, image/gif">
+                            <div class="photo-preview"></div>
+                            <small>Please upload a professional headshot or your company logo.</small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="permission-checkbox">
+                                <input type="checkbox" id="displayPermission" name="displayPermission" value="1">
+                                <label for="displayPermission">I grant ArkanTech Solutions permission to display this testimonial on their website and marketing materials.</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="capture-step" data-step="success" style="display: none;">
+                        <div class="success-message">
+                            <i class="fas fa-check-circle"></i>
+                            <h4>Thank You!</h4>
+                            <p>Your success story has been submitted successfully. We appreciate you sharing your experience with us!</p>
+                            <p>We'll review your submission and publish it soon.</p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            
+            <div class="modal-footer">
+                <button class="btn prev-step" style="display: none;">Previous</button>
+                <button class="btn next-step">Next</button>
+                <button class="btn submit-story" style="display: none;">Submit Story</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Arkansas Focus -->
+    <section class="section">
+        <div class="container">
+            <h2 class="brutalist-heading text-center">Arkansas's Premier IT Consulting Firm</h2>
+            <div class="text-center mb-2">
+                <p>Based in the heart of Arkansas, we understand the unique challenges and opportunities facing local businesses.</p>
+                <a href="about.html" class="btn btn-primary mt-1">Learn About Our Story</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h3>ArkanTech Solutions</h3>
+                    <p>Transforming Arkansas businesses through innovative technology solutions.</p>
+                </div>
+                <div>
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="case-studies.html">Case Studies</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Contact Us</h4>
+                    <p>Email: info@arkantechsolutions.com<br>
+                    Phone: (501) 555-0123</p>
+                </div>
+            </div>
+            <div class="text-center mt-2">
+                <p>&copy; 2024 ArkanTech Solutions. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/map-interactions.js"></script>
+    <script src="js/map-interactions-tech.js"></script>
+</body>
+</html>

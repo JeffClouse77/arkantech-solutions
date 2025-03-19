@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Interactive map of Arkansas regions">
+    <!-- Definitions for gradients, filters, and patterns -->
+    <defs>
+        <!-- Region Gradients -->
+        <linearGradient id="ozarkGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#2D5B7F"/>
+            <stop offset="100%" style="stop-color:#4682B4"/>
+        </linearGradient>
+        
+        <linearGradient id="deltaGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#3498DB"/>
+            <stop offset="80%" style="stop-color:#4682B4"/>
+        </linearGradient>
+        
+        <linearGradient id="centralGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="20%" style="stop-color:#2D5B7F"/>
+            <stop offset="100%" style="stop-color:#3498DB"/>
+        </linearGradient>
+
+        <!-- Drop Shadow Filter -->
+        <filter id="dropShadow" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur in="SourceAlpha" stdDeviation="2"/>
+            <feOffset dx="0" dy="2" result="offsetblur"/>
+            <feFlood flood-color="rgba(0,0,0,0.2)"/>
+            <feComposite in2="offsetblur" operator="in"/>
+            <feMerge>
+                <feMergeNode/>
+                <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+        </filter>
+
+        <!-- County Pattern -->
+        <pattern id="countyPattern" width="4" height="4" patternUnits="userSpaceOnUse">
+            <path d="M 0,0 L 4,4" stroke="#4682B4" stroke-width="0.5" stroke-dasharray="1 2" opacity="0.2"/>
+        </pattern>
+
+        <!-- City Marker Glow -->
+        <filter id="cityGlow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="2"/>
+            <feColorMatrix type="matrix" values="0 0 0 0 0.2 0 0 0 0 0.4 0 0 0 0 0.8 0 0 0 1 0"/>
+            <feMerge>
+                <feMergeNode/>
+                <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+        </filter>
+    </defs>
+
+    <!-- Base State Outline with Counties Pattern -->
+    <path class="state-outline" d="
+        M 180,120 
+        L 620,120 
+        L 620,150 
+        C 620,150 640,170 650,190 
+        L 650,600 
+        C 650,600 630,620 620,640 
+        C 610,660 600,680 580,700 
+        L 560,720 
+        C 560,720 540,740 520,750 
+        L 500,760 
+        L 480,770 
+        L 200,770 
+        C 200,770 180,750 170,730 
+        C 160,710 150,690 140,670 
+        L 140,190 
+        C 140,190 160,150 180,120 
+        Z"
+        fill="url(#countyPattern)"
+        stroke="#2D5B7F"
+        stroke-width="2"
+        filter="url(#dropShadow)"
+    />
+
+    <!-- Northwest Region (Ozarks) -->
+    <path id="northwest" class="region" d="
+        M 180,120 
+        L 400,120 
+        L 400,350 
+        C 400,350 380,360 360,370 
+        C 340,380 320,390 300,380 
+        C 280,370 260,360 240,350 
+        C 220,340 200,330 180,320 
+        C 180,280 180,240 180,200 
+        C 180,180 180,160 180,120 
+        Z"
+        fill="url(#ozarkGradient)"
+        data-region="northwest"
+    >
+        <title>Northwest Arkansas - Ozark Mountains</title>
+    </path>
+
+    <!-- Northeast Region (Delta) -->
+    <path id="northeast" class="region" d="
+        M 400,120 
+        L 620,120 
+        L 620,150 
+        C 620,150 640,170 650,190 
+        L 650,350 
+        L 400,350 
+        Z"
+        fill="url(#deltaGradient)"
+        data-region="northeast"
+    >
+        <title>Northeast Arkansas - Mississippi Delta</title>
+    </path>
+
+    <!-- Central Region -->
+    <path id="central" class="region" d="
+        M 180,320 
+        C 180,320 220,340 240,350 
+        C 260,360 280,370 300,380 
+        C 320,390 340,380 360,370 
+        C 380,360 400,350 400,350 
+        L 650,350 
+        L 650,500 
+        L 400,500 
+        C 400,500 380,490 360,480 
+        C 340,470 320,460 300,450 
+        C 280,440 260,430 240,420 
+        C 220,410 200,400 180,390 
+        Z"
+        fill="url(#centralGradient)"
+        data-region="central"
+    >
+        <title>Central Arkansas</title>
+    </path>
+
+    <!-- Southwest Region -->
+    <path id="southwest" class="region" d="
+        M 180,390 
+        C 180,390 220,410 240,420 
+        C 260,430 280,440 300,450 
+        C 320,460 340,470 360,480 
+        C 380,490 400,500 400,500 
+        L 400,770 
+        L 200,770 
+        C 200,770 180,750 170,730 
+        C 160,710 150,690 140,670 
+        L 140,390 
+        Z"
+        fill="url(#ozarkGradient)"
+        data-region="southwest"
+    >
+        <title>Southwest Arkansas</title>
+    </path>
+
+    <!-- Southeast Region -->
+    <path id="southeast" class="region" d="
+        M 400,500 
+        L 650,500 
+        L 650,600 
+        C 650,600 630,620 620,640 
+        C 610,660 600,680 580,700 
+        L 560,720 
+        C 560,720 540,740 520,750 
+        L 500,760 
+        L 480,770 
+        L 400,770 
+        Z"
+        fill="url(#deltaGradient)"
+        data-region="southeast"
+    >
+        <title>Southeast Arkansas</title>
+    </path>
+
+    <!-- Topographic Elements -->
+    <g class="topography">
+        <!-- Ozark Mountains -->
+        <path class="topo-line" d="
+            M 200,150 
+            Q 250,130 300,150 
+            T 400,170"
+            fill="none"
+            stroke="#2D5B7F"
+            stroke-width="0.5"
+            opacity="0.3"
+        />
+        <path class="topo-line" d="
+            M 180,200 
+            Q 230,180 280,200 
+            T 380,220"
+            fill="none"
+            stroke="#2D5B7F"
+            stroke-width="0.5"
+            opacity="0.3"
+        />
+
+        <!-- Ouachita Mountains -->
+        <path class="topo-line" d="
+            M 200,450 
+            Q 250,430 300,450 
+            T 400,470"
+            fill="none"
+            stroke="#2D5B7F"
+            stroke-width="0.5"
+            opacity="0.3"
+        />
+        <path class="topo-line" d="
+            M 180,500 
+            Q 230,480 280,500 
+            T 380,520"
+            fill="none"
+            stroke="#2D5B7F"
+            stroke-width="0.5"
+            opacity="0.3"
+        />
+    </g>
+
+    <!-- Rivers -->
+    <!-- Arkansas River -->
+    <path class="river" d="
+        M 180,320 
+        Q 250,330 300,350 
+        T 400,380 
+        Q 450,400 500,420 
+        T 600,450"
+        fill="none"
+        stroke="#3498DB"
+        stroke-width="2"
+        stroke-dasharray="4 2"
+    />
+
+    <!-- Mississippi River -->
+    <path class="river" d="
+        M 650,150 
+        Q 645,200 650,250 
+        T 650,350 
+        Q 645,400 650,450 
+        T 650,600"
+        fill="none"
+        stroke="#3498DB"
+        stroke-width="2"
+        stroke-dasharray="4 2"
+    />
+
+    <!-- White River -->
+    <path class="river" d="
+        M 500,120 
+        Q 480,170 470,220 
+        T 450,320 
+        Q 440,370 430,420"
+        fill="none"
+        stroke="#3498DB"
+        stroke-width="2"
+        stroke-dasharray="4 2"
+    />
+
+    <!-- Red River -->
+    <path class="river" d="
+        M 140,600 
+        Q 160,610 180,620 
+        T 220,640 
+        Q 240,650 260,660"
+        fill="none"
+        stroke="#3498DB"
+        stroke-width="2"
+        stroke-dasharray="4 2"
+    />
+
+    <!-- Major Cities -->
+    <g class="cities">
+        <!-- Little Rock -->
+        <circle class="city-marker" cx="400" cy="380" r="5" 
+            fill="#2D5B7F" 
+            stroke="#FFFFFF" 
+            stroke-width="2"
+            data-city="little-rock"
+        >
+            <title>Little Rock</title>
+        </circle>
+        <text x="410" y="385" class="city-label">Little Rock</text>
+
+        <!-- Fayetteville -->
+        <circle class="city-marker" cx="250" cy="150" r="5"
+            fill="#2D5B7F"
+            stroke="#FFFFFF"
+            stroke-width="2"
+            data-city="fayetteville"
+        >
+            <title>Fayetteville</title>
+        </circle>
+        <text x="260" y="155" class="city-label">Fayetteville</text>
+
+        <!-- Jonesboro -->
+        <circle class="city-marker" cx="550" cy="200" r="5"
+            fill="#2D5B7F"
+            stroke="#FFFFFF"
+            stroke-width="2"
+            data-city="jonesboro"
+        >
+            <title>Jonesboro</title>
+        </circle>
+        <text x="560" y="205" class="city-label">Jonesboro</text>
+
+        <!-- Fort Smith -->
+        <circle class="city-marker" cx="180" cy="300" r="5"
+            fill="#2D5B7F"
+            stroke="#FFFFFF"
+            stroke-width="2"
+            data-city="fort-smith"
+        >
+            <title>Fort Smith</title>
+        </circle>
+        <text x="190" y="305" class="city-label">Fort Smith</text>
+
+        <!-- Texarkana -->
+        <circle class="city-marker" cx="180" cy="650" r="5"
+            fill="#2D5B7F"
+            stroke="#FFFFFF"
+            stroke-width="2"
+            data-city="texarkana"
+        >
+            <title>Texarkana</title>
+        </circle>
+        <text x="190" y="655" class="city-label">Texarkana</text>
+    </g>
+</svg> 

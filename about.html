@@ -1,0 +1,1483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - ArkanTech Solutions</title>
+    <meta name="description" content="Learn about ArkanTech Solutions' founders and our mission to transform Arkansas businesses through technology.">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* About Page Specific Styles */
+        .hero-about {
+            position: relative;
+            height: 80vh;
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+            color: white;
+            overflow: hidden;
+        }
+        
+        .hero-about-content {
+            position: relative;
+            z-index: 5;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 2rem;
+        }
+        
+        .hero-about-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('images/circuit-pattern.svg');
+            background-size: cover;
+            opacity: 0.1;
+            z-index: 1;
+        }
+        
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 30px;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            backdrop-filter: blur(10px);
+        }
+        
+        .hero-about h1 {
+            font-size: 3.5rem;
+            color: white;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+        
+        .hero-about p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin-bottom: 2rem;
+        }
+        
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0) translateX(-50%);}
+            40% {transform: translateY(-20px) translateX(-50%);}
+            60% {transform: translateY(-10px) translateX(-50%);}
+        }
+        
+        .mission-section {
+            padding: 6rem 0;
+            background-color: white;
+        }
+        
+        .mission-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .mission-card {
+            background: var(--main-bg-color);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+            transform: translateY(0);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .mission-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 16px 48px rgba(0,0,0,0.2);
+        }
+        
+        .mission-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: var(--primary-blue);
+        }
+        
+        .mission-card i {
+            font-size: 2.5rem;
+            color: var(--primary-blue);
+            margin-bottom: 1.5rem;
+        }
+        
+        .journey-section {
+            background-color: var(--main-bg-color);
+            padding: 6rem 0;
+            position: relative;
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 4rem auto 0;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: var(--secondary-blue);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+            border-radius: 3px;
+        }
+        
+        .timeline-item {
+            padding: 0 3rem 3rem 3rem;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+        
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+        
+        .timeline-content {
+            padding: 2rem;
+            background-color: white;
+            border-radius: 12px;
+            position: relative;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-content::after {
+            content: '';
+            position: absolute;
+            top: 35px;
+            right: -15px;
+            width: 0;
+            height: 0;
+            border-top: 15px solid transparent;
+            border-bottom: 15px solid transparent;
+            border-left: 15px solid white;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content::after {
+            content: '';
+            position: absolute;
+            top: 35px;
+            left: -15px;
+            width: 0;
+            height: 0;
+            border-top: 15px solid transparent;
+            border-bottom: 15px solid transparent;
+            border-right: 15px solid white;
+        }
+        
+        .timeline-dot {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            right: -15px;
+            background-color: var(--primary-blue);
+            border-radius: 50%;
+            top: 35px;
+            z-index: 2;
+            border: 4px solid white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+        
+        .timeline-item:nth-child(even) .timeline-dot {
+            left: -15px;
+        }
+        
+        .timeline-date {
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+        }
+        
+        .passion-section {
+            background: linear-gradient(135deg, #162447 0%, #1f4068 100%);
+            color: white;
+            padding: 6rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .passion-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(circle at 20% 50%, rgba(26, 115, 232, 0.1) 0%, transparent 50%),
+                              radial-gradient(circle at 80% 80%, rgba(26, 115, 232, 0.1) 0%, transparent 50%);
+            z-index: 1;
+        }
+        
+        .passion-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .passion-content h2 {
+            color: white;
+        }
+        
+        .stats-section {
+            padding: 5rem 0;
+            background-color: white;
+            text-align: center;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .stat-item {
+            padding: 2rem;
+            position: relative;
+        }
+        
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .stat-number span {
+            font-size: 2rem;
+            margin-left: 0.3rem;
+        }
+        
+        .stat-text {
+            font-size: 1.1rem;
+            color: var(--dark-text);
+        }
+        
+        .team-section {
+            background-color: var(--main-bg-color);
+            padding: 6rem 0;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+        
+        .team-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 16px 48px rgba(0,0,0,0.15);
+        }
+        
+        .team-header {
+            height: 200px;
+            position: relative;
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+        }
+        
+        .team-avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid white;
+            position: absolute;
+            bottom: -75px;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+        }
+        
+        .team-body {
+            padding: 5rem 2rem 2rem;
+            text-align: center;
+        }
+        
+        .team-name {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .team-role {
+            color: var(--secondary-blue);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+        
+        .team-bio {
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .team-social {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+        
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--main-bg-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-blue);
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            background: var(--primary-blue);
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        .values-section {
+            padding: 6rem 0;
+            background-color: white;
+        }
+        
+        .values-accordion {
+            max-width: 800px;
+            margin: 3rem auto 0;
+        }
+        
+        .accordion-item {
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .accordion-header {
+            padding: 1.5rem;
+            background-color: var(--main-bg-color);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s ease;
+        }
+        
+        .accordion-header:hover {
+            background-color: var(--secondary-bg-color);
+        }
+        
+        .accordion-header h3 {
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .accordion-content {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+        
+        .accordion-content.active {
+            padding: 1.5rem;
+            max-height: 1000px;
+        }
+        
+        .cta-section {
+            background: linear-gradient(to right, var(--primary-blue), var(--secondary-blue));
+            padding: 5rem 0;
+            text-align: center;
+            color: white;
+        }
+        
+        .cta-section h2 {
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .btn-outline-white {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .btn-outline-white:hover {
+            background: rgba(255,255,255,0.1);
+        }
+        
+        @media (max-width: 768px) {
+            .hero-about h1 {
+                font-size: 2.5rem;
+            }
+            
+            .timeline::before {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+            
+            .timeline-dot {
+                left: 16px;
+                right: unset;
+            }
+            
+            .timeline-item:nth-child(odd) .timeline-content::after,
+            .timeline-item:nth-child(even) .timeline-content::after {
+                display: none;
+            }
+            
+            .team-grid {
+                grid-template-columns: 1fr;
+                max-width: 350px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                max-width: 250px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+        
+        /* New Enhanced Styles for Origin Story Section */
+        .origin-story-section {
+            padding: 0;
+            position: relative;
+            overflow: hidden;
+            margin-top: -3rem;
+            z-index: 10;
+        }
+        
+        .origin-story-container {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.2);
+            overflow: hidden;
+            max-width: 1000px;
+            margin: 0 auto;
+            transform: translateY(-60px);
+            border: 5px solid var(--primary-blue);
+        }
+        
+        .origin-story-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+        
+        .origin-left {
+            padding: 4rem;
+            position: relative;
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgdmlld0JveD0iMCAwIDYwIDYwIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGZpbGw9IiNmMmY2ZmEiIGQ9Ik0wIDBoNjB2NjBIMHoiLz48cGF0aCBzdHJva2U9IiNlMGU4ZjAiIHN0cm9rZS13aWR0aD0iLjUiIGQ9Ik0xNSAxNWgzMHYzMEgxNXoiLz48L2c+PC9zdmc+');
+        }
+        
+        .origin-right {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, #1557b0 100%);
+            padding: 4rem;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .origin-right::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAwIiBoZWlnaHQ9IjYwMCIgdmlld0JveD0iMCAwIDYwMCA2MDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMzAwLDMwMCkiPjxwYXRoIGQ9Ik0xNTAsMCBMMTMwLDk0IEw5Niw1NCBMMTEzLDk1IEwzNCw4OSBMMTAzLDExNyBMNDQsMTQyIEwxMTMsMTU0IEw3MCwxOTYgTDEzOCwxODUgTDExMCwyNDcgTDE3MywyMTQgTDE3MywyNzcgTDIyNywyMjcgTDI0OCwyOTQgTDI3OSwyMjYgTDMzOCwyNjUgTDMyMSwyMDQgTDQwMCwyMDAgTDMzMSwxNzIgTDM5MCwxNDcgTDMyMSwxMzUgTDM2NCw5MyBMMjk2LDEwNCBMMzI0LDQzIEwyNjEsNzYgTDI2MSwxMyBMMjA3LDYzIEwxODYsLTQgTDE1NSw2NCBMMTUwLDAgWiIgc3Ryb2tlPSIjZmZmIiBmaWxsPSJub25lIiBzdHJva2Utd2lkdGg9IjIiIG9wYWNpdHk9IjAuMSIvPjwvZz48L3N2Zz4=');
+            background-size: cover;
+            opacity: 0.15;
+            z-index: 1;
+            animation: rotate 180s linear infinite;
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .spotlight-badge {
+            display: inline-block;
+            background: var(--primary-blue);
+            color: white;
+            font-size: 1rem;
+            font-weight: 700;
+            padding: 0.7rem 1.5rem;
+            border-radius: 30px;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(26, 115, 232, 0.4);
+            animation: pulse-badge 2s infinite;
+        }
+        
+        @keyframes pulse-badge {
+            0% { transform: scale(1); box-shadow: 0 10px 30px rgba(26, 115, 232, 0.5), 0 0 0 10px rgba(26, 115, 232, 0.1); }
+            50% { transform: scale(1.05); box-shadow: 0 10px 30px rgba(26, 115, 232, 0.7), 0 0 0 15px rgba(26, 115, 232, 0.2); }
+            100% { transform: scale(1); box-shadow: 0 10px 30px rgba(26, 115, 232, 0.5), 0 0 0 10px rgba(26, 115, 232, 0.1); }
+        }
+        
+        .spotlight-title {
+            font-size: 3rem !important;
+            line-height: 1.1;
+            margin-bottom: 1.8rem;
+            position: relative;
+            font-weight: 800;
+            background: linear-gradient(to right, var(--primary-blue), #1557b0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+        
+        .spotlight-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 0;
+            width: 120px;
+            height: 8px;
+            background: linear-gradient(to right, var(--primary-blue), transparent);
+            border-radius: 4px;
+        }
+        
+        .highlight-text {
+            position: relative;
+            display: inline-block;
+            color: var(--primary-blue);
+            font-size: 110%;
+            -webkit-text-fill-color: var(--primary-blue);
+            animation: text-pulse 2s infinite;
+            text-shadow: 0 0 15px rgba(26, 115, 232, 0.3);
+        }
+        
+        @keyframes text-pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .emphasis-text {
+            font-size: 130%;
+            display: block;
+            margin-bottom: 1rem;
+            color: var(--dark-text);
+        }
+        
+        .origin-description {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+        
+        .founding-callout {
+            display: flex;
+            align-items: center;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(230, 240, 255, 0.8) 0%, rgba(200, 225, 255, 0.8) 100%);
+            border-left: 5px solid var(--primary-blue);
+            border-radius: 0 8px 8px 0;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            margin-top: 2rem;
+        }
+        
+        .callout-icon {
+            font-size: 2rem;
+            color: var(--primary-blue);
+            margin-right: 1.5rem;
+        }
+        
+        .callout-text {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--dark-text);
+            font-style: italic;
+            line-height: 1.4;
+        }
+        
+        .origin-quote {
+            font-size: 2rem;
+            line-height: 1.3;
+            font-weight: 300;
+            font-style: italic;
+            position: relative;
+            z-index: 2;
+            margin-bottom: 2rem;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            padding-left: 2rem;
+            border-left: 5px solid rgba(255,255,255,0.3);
+        }
+        
+        .origin-quote::before {
+            content: '"';
+            font-size: 10rem;
+            position: absolute;
+            top: -70px;
+            left: -20px;
+            color: rgba(255,255,255,0.1);
+            z-index: -1;
+        }
+        
+        .founders-spotlight {
+            background: rgba(0,0,0,0.2);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-top: 2rem;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            border: 1px solid rgba(255,255,255,0.1);
+            backdrop-filter: blur(5px);
+        }
+        
+        .founders-title {
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+        }
+        
+        .founders-avatars {
+            display: flex;
+            margin-bottom: 1.5rem;
+        }
+        
+        .founder-avatar {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: #1557b0;
+            margin-right: -20px;
+            border: 4px solid rgba(255,255,255,0.8);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .founder-avatar:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+        }
+        
+        .founder-avatar.founder-1 {
+            background: linear-gradient(135deg, #4169E1, #1E3A8A);
+            z-index: 3;
+        }
+        
+        .founder-avatar.founder-2 {
+            background: linear-gradient(135deg, #4682B4, #1E3A8A);
+            z-index: 2;
+        }
+        
+        .founder-avatar.founder-3 {
+            background: linear-gradient(135deg, #6495ED, #1E3A8A);
+            z-index: 1;
+        }
+        
+        .founders-text h4 {
+            color: white;
+            margin: 0;
+            font-size: 1.4rem;
+        }
+        
+        .founders-text p {
+            margin: 0.5rem 0 0;
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.8);
+        }
+        
+        @media (max-width: 768px) {
+            .origin-story-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .origin-left, .origin-right {
+                padding: 3rem 2rem;
+            }
+            
+            .spotlight-title {
+                font-size: 2.5rem !important;
+            }
+            
+            .origin-quote {
+                font-size: 1.7rem;
+            }
+            
+            .founding-callout {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .callout-icon {
+                margin-right: 0;
+                margin-bottom: 1rem;
+            }
+        }
+        
+        /* Arkansas Business Focus Callout */
+        .arkansas-focus {
+            position: relative;
+            padding: 5rem 0;
+            background: #f8f9fa;
+            overflow: hidden;
+        }
+        
+        .arkansas-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.03;
+            background-image: url('images/arkansas-outline.svg');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 80%;
+        }
+        
+        .arkansas-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .state-badge {
+            display: inline-block;
+            background: var(--primary-blue);
+            color: white;
+            font-size: 0.9rem;
+            font-weight: 600;
+            padding: 0.5rem 1.5rem;
+            border-radius: 30px;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transform: translateY(0);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        
+        .arkansas-title {
+            font-size: 3rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            color: var(--primary-blue);
+        }
+        
+        .arkansas-description {
+            font-size: 1.3rem;
+            line-height: 1.7;
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+        }
+        
+        .reason-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .reason-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            text-align: left;
+        }
+        
+        .reason-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .reason-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--primary-blue);
+        }
+        
+        .reason-card i {
+            font-size: 2rem;
+            color: var(--primary-blue);
+            margin-bottom: 1.5rem;
+        }
+        
+        .reason-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+        }
+        
+        .reason-card p {
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        
+        @keyframes pulse-badge {
+            0% { transform: scale(1); box-shadow: 0 10px 30px rgba(26, 115, 232, 0.5), 0 0 0 10px rgba(26, 115, 232, 0.1); }
+            50% { transform: scale(1.05); box-shadow: 0 10px 30px rgba(26, 115, 232, 0.7), 0 0 0 15px rgba(26, 115, 232, 0.2); }
+            100% { transform: scale(1); box-shadow: 0 10px 30px rgba(26, 115, 232, 0.5), 0 0 0 10px rgba(26, 115, 232, 0.1); }
+        }
+        
+        @keyframes gradient-shift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        @keyframes pop-highlight {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        @keyframes pulse-container {
+            0% { box-shadow: 0 30px 60px rgba(0,0,0,0.2); }
+            50% { box-shadow: 0 30px 60px rgba(26, 115, 232, 0.4); }
+            100% { box-shadow: 0 30px 60px rgba(0,0,0,0.2); }
+        }
+        
+        /* Fix for team section images */
+        .team-header {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .team-avatar {
+            background-size: cover;
+            background-position: center;
+            background-color: #1a73e8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            font-weight: bold;
+        }
+        
+        /* Make mobile responsive */
+        @media (max-width: 768px) {
+            #origin-story .container > div {
+                transform: translateY(-30px) !important;
+            }
+            
+            #origin-story .container > div > div {
+                grid-template-columns: 1fr !important;
+            }
+            
+            #origin-story h2 {
+                font-size: 3rem !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-bar">
+        <div class="progress-fill"></div>
+    </div>
+
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="nav-logo">ArkanTech Solutions</a>
+            <button class="mobile-menu-btn" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="services.html" class="nav-link">Services</a></li>
+                <li><a href="case-studies.html" class="nav-link">Case Studies</a></li>
+                <li><a href="blog.html" class="nav-link">Blog</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-about">
+        <div class="hero-about-bg"></div>
+        <div class="container hero-about-content">
+            <span class="hero-badge">Arkansas's Technology Partner</span>
+            <h1>Empowering Arkansas Through Technology</h1>
+            <p>We're a team of passionate innovators dedicated to transforming Arkansas businesses with cutting-edge technology solutions.</p>
+            <a href="#origin-story" class="btn btn-primary">Our Story</a>
+        </div>
+        <a href="#origin-story" class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </a>
+    </section>
+
+    <!-- NEW: Origin Story Section with INLINE STYLES to ensure they work -->
+    <section id="origin-story" class="origin-story-section" style="padding: 0; position: relative; overflow: hidden; margin-top: -3rem; z-index: 10; transition: all 0.5s ease;">
+        <div class="container">
+            <div style="background: white; border-radius: 16px; box-shadow: 0 30px 60px rgba(0,0,0,0.3); overflow: hidden; max-width: 1000px; margin: 0 auto; transform: translateY(-60px); border: 5px solid #1a73e8; animation: pulse-container 3s infinite;">
+                <div style="display: grid; grid-template-columns: 1fr 1fr;">
+                    <div style="padding: 4rem; position: relative; background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgdmlld0JveD0iMCAwIDYwIDYwIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGZpbGw9IiNmMmY2ZmEiIGQ9Ik0wIDBoNjB2NjBIMHoiLz48cGF0aCBzdHJva2U9IiNlMGU4ZjAiIHN0cm9rZS13aWR0aD0iLjUiIGQ9Ik0xNSAxNWgzMHYzMEgxNXoiLz48L2c+PC9zdmc+');">
+                        <!-- Super eye-catching badge -->
+                        <div style="display: flex; justify-content: center; align-items: center; margin-bottom: 2rem;">
+                            <div style="background: #1a73e8; color: white; font-size: 1.5rem; font-weight: 800; padding: 1rem 2rem; border-radius: 5px; position: relative; box-shadow: 0 10px 30px rgba(26, 115, 232, 0.5), 0 0 0 10px rgba(26, 115, 232, 0.1); letter-spacing: 2px; text-align: center; animation: pulse-badge 2s infinite;">ARKANSAS ROOTS</div>
+                        </div>
+                        
+                        <!-- Mega title that stands out -->
+                        <h2 style="font-size: 4rem !important; line-height: 1; margin-bottom: 2rem; font-weight: 900; text-transform: uppercase; background: linear-gradient(45deg, #1a73e8, #5C9CE5, #1a73e8); background-size: 200% 200%; -webkit-background-clip: text; -webkit-text-fill-color: transparent; display: inline-block; animation: gradient-shift 5s ease infinite;">Born from a <span style="position: relative; display: inline-block; font-size: 130%; -webkit-text-fill-color: #1a73e8; background: none; padding: 0 10px; animation: pop-highlight 2s infinite;">PASSION</span><br>for Arkansas Business</h2>
+                        
+                        <p style="font-size: 1.2rem; line-height: 1.8; margin-bottom: 2rem;">
+                            <strong style="font-size: 150%; display: block; margin-bottom: 1.5rem; color: #1D1D1F; font-weight: 700; line-height: 1.4; position: relative; padding-left: 25px;">ArkanTech Solutions wasn't just founded—it was born out of necessity and passion.</strong> 
+                            
+                            In 2015, three tech enthusiasts with deep Arkansas roots came together in a small Little Rock office with a shared vision: to transform how local businesses leverage technology.
+                        </p>
+                        
+                        <!-- Added callout box -->
+                        <div style="margin-top: 2rem; padding: 1.5rem; background: linear-gradient(135deg, rgba(230, 240, 255, 0.8) 0%, rgba(200, 225, 255, 0.8) 100%); border-left: 5px solid #1a73e8; border-radius: 0 8px 8px 0; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
+                            <i class="fas fa-quote-left" style="font-size: 2rem; color: #1a73e8; margin-right: 1rem; display: inline-block; vertical-align: top;"></i>
+                            <span style="font-size: 1.3rem; font-weight: 600; color: #1D1D1F; font-style: italic; line-height: 1.4;">Founded by tech enthusiasts with a passion for Arkansas business</span>
+                        </div>
+                    </div>
+                    
+                    <div style="background: linear-gradient(135deg, #1a73e8 0%, #1557b0 100%); padding: 4rem; color: white; position: relative; overflow: hidden;">
+                        <!-- Background pattern with animation -->
+                        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAwIiBoZWlnaHQ9IjYwMCIgdmlld0JveD0iMCAwIDYwMCA2MDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMzAwLDMwMCkiPjxwYXRoIGQ9Ik0xNTAsMCBMMTMwLDk0IEw5Niw1NCBMMTEzLDk1IEwzNCw4OSBMMTAzLDExNyBMNDQsMTQyIEwxMTMsMTU0IEw3MCwxOTYgTDEzOCwxODUgTDExMCwyNDcgTDE3MywyMTQgTDE3MywyNzcgTDIyNywyMjcgTDI0OCwyOTQgTDI3OSwyMjYgTDMzOCwyNjUgTDMyMSwyMDQgTDQwMCwyMDAgTDMzMSwxNzIgTDM5MCwxNDcgTDMyMSwxMzUgTDM2NCw5MyBMMjk2LDEwNCBMMzI0LDQzIEwyNjEsNzYgTDI2MSwxMyBMMjA3LDYzIEwxODYsLTQgTDE1NSw2NCBMMTUwLDAgWiIgc3Ryb2tlPSIjZmZmIiBmaWxsPSJub25lIiBzdHJva2Utd2lkdGg9IjIiIG9wYWNpdHk9IjAuMSIvPjwvZz48L3N2Zz4='); background-size: cover; opacity: 0.15; z-index: 1; animation: rotate 180s linear infinite;"></div>
+                        
+                        <!-- Inspirational quote -->
+                        <div style="font-size: 2rem; line-height: 1.3; font-weight: 300; font-style: italic; position: relative; z-index: 2; margin-bottom: 2rem; text-shadow: 0 2px 10px rgba(0,0,0,0.2); padding-left: 2rem; border-left: 5px solid rgba(255,255,255,0.3);">
+                            We don't just build technology solutions. We build bridges that connect Arkansas businesses to unprecedented opportunities.
+                        </div>
+                        
+                        <p style="position: relative; z-index: 2;">
+                            Our founding mission remains unchanged: to level the playing field and ensure that Arkansas businesses have access to the same cutting-edge technology, expertise, and support as companies anywhere else in the world.
+                        </p>
+                        
+                        <!-- Founders spotlight with placeholder images -->
+                        <div style="background: rgba(0,0,0,0.2); border-radius: 12px; padding: 2rem; margin-top: 2rem; position: relative; z-index: 2; box-shadow: 0 10px 30px rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(5px);">
+                            <div style="font-size: 0.9rem; font-weight: 700; letter-spacing: 2px; color: rgba(255,255,255,0.7); margin-bottom: 1.5rem; text-transform: uppercase;">THE ARKANSAS TECH PIONEERS</div>
+                            
+                            <!-- Founders avatars with placeholder images -->
+                            <div style="display: flex; margin-bottom: 1.5rem;">
+                                <!-- Using placeholder images instead of missing files -->
+                                <img src="https://via.placeholder.com/70x70.png?text=J" alt="Jeff" style="width: 70px; height: 70px; border-radius: 50%; margin-right: -20px; border: 4px solid rgba(255,255,255,0.8); box-shadow: 0 5px 15px rgba(0,0,0,0.2); position: relative; z-index: 3; transition: all 0.3s ease; background: linear-gradient(135deg, #4169E1, #1E3A8A);">
+                                
+                                <img src="https://via.placeholder.com/70x70.png?text=D" alt="Deon" style="width: 70px; height: 70px; border-radius: 50%; margin-right: -20px; border: 4px solid rgba(255,255,255,0.8); box-shadow: 0 5px 15px rgba(0,0,0,0.2); position: relative; z-index: 2; transition: all 0.3s ease; background: linear-gradient(135deg, #4682B4, #1E3A8A);">
+                                
+                                <img src="https://via.placeholder.com/70x70.png?text=J" alt="Justin" style="width: 70px; height: 70px; border-radius: 50%; border: 4px solid rgba(255,255,255,0.8); box-shadow: 0 5px 15px rgba(0,0,0,0.2); position: relative; z-index: 1; transition: all 0.3s ease; background: linear-gradient(135deg, #6495ED, #1E3A8A);">
+                            </div>
+                            
+                            <div style="color: white;">
+                                <h4 style="color: white; margin: 0; font-size: 1.4rem;">The Founding Team</h4>
+                                <p style="margin: 0.5rem 0 0; font-size: 1.1rem; color: rgba(255,255,255,0.8);">Jeff, Deon & Justin - Arkansans with a passion for technology</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW: Arkansas Business Focus Section -->
+    <section class="arkansas-focus">
+        <div class="arkansas-bg"></div>
+        <div class="container">
+            <div class="arkansas-content">
+                <span class="state-badge">Arkansas First</span>
+                <h2 class="arkansas-title">Why We're Passionate About Arkansas Business</h2>
+                <p class="arkansas-description">
+                    We believe that technology should empower local businesses, not overwhelm them. Our dedication to Arkansas is more than just geography—it's our purpose.
+                </p>
+                
+                <div class="reason-cards">
+                    <div class="reason-card">
+                        <i class="fas fa-map-marked-alt"></i>
+                        <h3>Local Understanding</h3>
+                        <p>As born-and-raised Arkansans, we understand the unique challenges and opportunities of doing business here. We're not just service providers—we're neighbors working together.</p>
+                    </div>
+                    
+                    <div class="reason-card">
+                        <i class="fas fa-handshake"></i>
+                        <h3>Community Impact</h3>
+                        <p>Every business we help strengthens our local economy. By empowering Arkansas businesses with technology, we're creating jobs and building a more prosperous state.</p>
+                    </div>
+                    
+                    <div class="reason-card">
+                        <i class="fas fa-chart-line"></i>
+                        <h3>Growth Potential</h3>
+                        <p>We see the unlimited potential in Arkansas businesses. With the right technology partner, local companies can compete and succeed on a global scale.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section id="mission" class="mission-section">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 style="font-size: 2.8rem; font-weight: 800; text-align: center; margin-bottom: 1.5rem;">Our Mission</h2>
+                <p>At ArkanTech Solutions, we're on a mission to bridge the technology gap for Arkansas businesses, helping them thrive in the digital age.</p>
+            </div>
+            
+            <div class="mission-cards">
+                <div class="mission-card">
+                    <i class="fas fa-lightbulb"></i>
+                    <h3>Innovate</h3>
+                    <p>We constantly seek innovative solutions to help local businesses solve complex problems and stay ahead of the competition.</p>
+                </div>
+                
+                <div class="mission-card">
+                    <i class="fas fa-handshake"></i>
+                    <h3>Partner</h3>
+                    <p>We build long-term partnerships with our clients, becoming an extension of their team and truly understanding their needs.</p>
+                </div>
+                
+                <div class="mission-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Elevate</h3>
+                    <p>We elevate Arkansas businesses by implementing solutions that drive growth, efficiency, and competitive advantage.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Passion Section -->
+    <section class="passion-section">
+        <div class="passion-bg"></div>
+        <div class="container">
+            <div class="passion-content">
+                <h2>Why We're Passionate About Technology</h2>
+                <p>Technology isn't just our business—it's our passion. We believe that the right technology solutions can transform not just companies, but entire communities.</p>
+                
+                <p>Growing up in Arkansas, we witnessed firsthand how technology could bridge gaps, create opportunities, and empower businesses of all sizes. But we also saw how smaller, local companies often lacked access to the same technological advantages as larger corporations.</p>
+                
+                <p>That's why we founded ArkanTech Solutions: to level the playing field and ensure that Arkansas businesses have access to the same cutting-edge technology, expertise, and support as companies anywhere else in the world.</p>
+                
+                <p>We're passionate about seeing local businesses thrive, creating jobs, and contributing to Arkansas's growing reputation as a hub for innovation and technological advancement.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2>Our Impact</h2>
+                <p>The numbers that drive our passion for helping Arkansas businesses succeed.</p>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number" data-count="150">0<span>+</span></div>
+                    <div class="stat-text">Businesses Transformed</div>
+                </div>
+                
+                <div class="stat-item">
+                    <div class="stat-number" data-count="28">0<span>%</span></div>
+                    <div class="stat-text">Average Efficiency Increase</div>
+                </div>
+                
+                <div class="stat-item">
+                    <div class="stat-number" data-count="45">0<span>+</span></div>
+                    <div class="stat-text">Team Members</div>
+                </div>
+                
+                <div class="stat-item">
+                    <div class="stat-number" data-count="12">0<span>M</span></div>
+                    <div class="stat-text">Technology Savings</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Journey Section -->
+    <section class="journey-section">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2>Our Journey</h2>
+                <p>From humble beginnings to becoming Arkansas's premier technology partner.</p>
+            </div>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2015</div>
+                        <h3>The Beginning</h3>
+                        <p>Founded in a small office in Little Rock by three tech enthusiasts with a shared vision to help local businesses leverage technology.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2017</div>
+                        <h3>Expanding Our Reach</h3>
+                        <p>Opened our second office in Fayetteville to better serve businesses across the state, growing our team to 15 members.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2019</div>
+                        <h3>Innovation Hub</h3>
+                        <p>Launched our Innovation Hub, a dedicated space for research, development, and testing of emerging technologies tailored for Arkansas businesses.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2021</div>
+                        <h3>State-wide Recognition</h3>
+                        <p>Recognized as Arkansas's Top Technology Consulting Firm, serving over 100 businesses across various industries.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2023</div>
+                        <h3>Today</h3>
+                        <p>Now a team of 45+ technology experts, we continue to push boundaries and help Arkansas businesses thrive in the digital landscape.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2>Our Leadership Team</h2>
+                <p>Meet the passionate experts guiding our mission to transform Arkansas businesses.</p>
+            </div>
+            
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="team-header">
+                        <!-- Replace with placeholder div -->
+                        <div class="team-avatar" style="background-image: url('https://via.placeholder.com/150x150.png?text=Jeff+C');">JC</div>
+                    </div>
+                    <div class="team-body">
+                        <h3 class="team-name">Jeff Connor</h3>
+                        <div class="team-role">CEO & Co-Founder</div>
+                        <p class="team-bio">With 20+ years in technology consulting, Jeff is passionate about helping Arkansas businesses leverage technology to compete on a global scale.</p>
+                        <div class="team-social">
+                            <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="social-icon"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="team-card">
+                    <div class="team-header">
+                        <!-- Replace with placeholder div -->
+                        <div class="team-avatar" style="background-image: url('https://via.placeholder.com/150x150.png?text=Deon+J');">DJ</div>
+                    </div>
+                    <div class="team-body">
+                        <h3 class="team-name">Deon Jackson</h3>
+                        <div class="team-role">CTO & Co-Founder</div>
+                        <p class="team-bio">Deon leads our technology strategy, ensuring we're always at the cutting edge of innovation while delivering practical solutions for real business needs.</p>
+                        <div class="team-social">
+                            <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
+                            <a href="#" class="social-icon"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="team-card">
+                    <div class="team-header">
+                        <!-- Replace with placeholder div -->
+                        <div class="team-avatar" style="background-image: url('https://via.placeholder.com/150x150.png?text=Justin+M');">JM</div>
+                    </div>
+                    <div class="team-body">
+                        <h3 class="team-name">Justin Miller</h3>
+                        <div class="team-role">COO & Co-Founder</div>
+                        <p class="team-bio">As our operations leader, Justin ensures that our clients receive exceptional service and that our solutions deliver measurable business impact.</p>
+                        <div class="team-social">
+                            <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="social-icon"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="values-section">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2>Our Core Values</h2>
+                <p>The principles that guide our approach to technology and business.</p>
+            </div>
+            
+            <div class="values-accordion">
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3><i class="fas fa-star"></i> Excellence</h3>
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>We never settle for "good enough." From the solutions we design to the service we provide, we strive for excellence in everything we do. This means staying ahead of technology trends, continuously improving our skills, and delivering work that exceeds expectations.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3><i class="fas fa-users"></i> Community</h3>
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>We're deeply committed to the Arkansas community. Beyond serving local businesses, we actively participate in STEM education initiatives, support local technology events, and contribute to the growth of Arkansas's technology ecosystem. We believe that our success is intertwined with the prosperity of our community.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3><i class="fas fa-lightbulb"></i> Innovation</h3>
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Innovation is at the heart of what we do. We embrace new technologies, methods, and ideas, constantly seeking better ways to solve problems and create opportunities. Our Innovation Hub is dedicated to exploring emerging technologies and developing new approaches that can benefit Arkansas businesses.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3><i class="fas fa-handshake"></i> Partnership</h3>
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>We don't just work for our clients; we work with them. We believe in building lasting partnerships based on mutual trust, respect, and shared success. We take the time to understand each client's unique goals, challenges, and opportunities, and we're invested in their long-term growth and success.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3><i class="fas fa-shield-alt"></i> Integrity</h3>
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>We operate with unwavering integrity in all our interactions. This means being honest about capabilities and limitations, transparent about costs and timelines, and accountable for our work. We do what's right for our clients, even when it's not the easiest or most profitable option.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Transform Your Business?</h2>
+            <p>Let's discuss how ArkanTech Solutions can help you leverage technology to drive growth and innovation.</p>
+            <div class="cta-buttons">
+                <a href="contact.html" class="btn btn-primary">Get in Touch</a>
+                <a href="services.html" class="btn btn-outline-white">Explore Our Services</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div>
+                <h3>ArkanTech Solutions</h3>
+                <p>Empowering Arkansas businesses with innovative technology solutions.</p>
+            </div>
+            <div>
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Contact</h4>
+                <p>Little Rock, Arkansas</p>
+                <p>Email: info@arkantech.com</p>
+                <p>Phone: (501) 555-0123</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="custom-cursor"></div>
+    <script src="js/main.js"></script>
+    
+    <script>
+        // Accordion functionality
+        const accordionHeaders = document.querySelectorAll('.accordion-header');
+        
+        accordionHeaders.forEach(header => {
+            header.addEventListener('click', function() {
+                const content = this.nextElementSibling;
+                const icon = this.querySelector('.fas');
+                
+                // Toggle active class
+                content.classList.toggle('active');
+                
+                // Toggle icon
+                if (content.classList.contains('active')) {
+                    icon.classList.remove('fa-plus');
+                    icon.classList.add('fa-minus');
+                } else {
+                    icon.classList.remove('fa-minus');
+                    icon.classList.add('fa-plus');
+                }
+                
+                // Close other accordions
+                accordionHeaders.forEach(otherHeader => {
+                    if (otherHeader !== header) {
+                        const otherContent = otherHeader.nextElementSibling;
+                        const otherIcon = otherHeader.querySelector('.fas');
+                        
+                        otherContent.classList.remove('active');
+                        otherIcon.classList.remove('fa-minus');
+                        otherIcon.classList.add('fa-plus');
+                    }
+                });
+            });
+        });
+        
+        // Animate stats when in viewport
+        const statNumbers = document.querySelectorAll('.stat-number');
+        
+        const animateStats = () => {
+            statNumbers.forEach(stat => {
+                const target = parseInt(stat.getAttribute('data-count'));
+                const current = parseInt(stat.textContent);
+                const increment = target / 100;
+                
+                if (current < target) {
+                    stat.textContent = Math.ceil(current + increment);
+                    setTimeout(animateStats, 20);
+                } else {
+                    stat.textContent = target;
+                }
+            });
+        };
+        
+        // Start animation when section is in viewport
+        const statsSection = document.querySelector('.stats-section');
+        
+        const isInViewport = (element) => {
+            const rect = element.getBoundingClientRect();
+            return (
+                rect.top >= 0 &&
+                rect.left >= 0 &&
+                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+            );
+        };
+        
+        window.addEventListener('scroll', () => {
+            if (isInViewport(statsSection)) {
+                animateStats();
+            }
+        });
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 100,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html> 

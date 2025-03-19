@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - ArkanTech Solutions</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="progress-bar">
+        <div class="progress-fill"></div>
+    </div>
+
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="nav-logo">ArkanTech Solutions</a>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="services.html" class="nav-link">Services</a></li>
+                <li><a href="case-studies.html" class="nav-link">Case Studies</a></li>
+                <li><a href="blog.html" class="nav-link">Blog</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <section class="brutalist-block">
+            <div class="container">
+                <h1 class="brutalist-heading">Tech Insights</h1>
+                <p class="text-light">Latest technology trends and insights for Arkansas businesses</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="services-grid">
+                    <div class="service-card">
+                        <h3>The Future of AI in Arkansas Business</h3>
+                        <p>Exploring how artificial intelligence is transforming local businesses and creating new opportunities.</p>
+                        <div class="tags mt-2">
+                            <span class="tag">AI</span>
+                            <span class="tag">Technology Trends</span>
+                        </div>
+                        <button onclick="window.location.href='blog-ai-adoption-arkansas.html'" class="btn btn-primary mt-2">Read More</button>
+                    </div>
+                    <div class="service-card">
+                        <h3>Cybersecurity Best Practices for 2025</h3>
+                        <p>Essential security measures every Arkansas business should implement to protect against cyber threats.</p>
+                        <div class="tags mt-2">
+                            <span class="tag">Cybersecurity</span>
+                            <span class="tag">Best Practices</span>
+                        </div>
+                        <button onclick="window.location.href='blog-cybersecurity-best-practices.html'" class="btn btn-primary mt-2">Read More</button>
+                    </div>
+                    <div class="service-card">
+                        <h3>Digital Transformation Success Stories</h3>
+                        <p>How local businesses are leveraging technology to stay competitive in the digital age.</p>
+                        <div class="tags mt-2">
+                            <span class="tag">Digital Transformation</span>
+                            <span class="tag">Success Stories</span>
+                        </div>
+                        <button onclick="window.location.href='blog-digital-transformation.html'" class="btn btn-primary mt-2">Read More</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div>
+                <h3>ArkanTech Solutions</h3>
+                <p>Empowering Arkansas businesses with innovative technology solutions.</p>
+            </div>
+            <div>
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Contact</h4>
+                <p>Little Rock, Arkansas</p>
+                <p>Email: info@arkantech.com</p>
+                <p>Phone: (501) 555-0123</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="custom-cursor"></div>
+    <script src="js/main.js"></script>
+
+    <!-- Add this diagnostic section at the bottom of blog.html before </body> -->
+    <div style="margin-top: 50px; padding: 20px; border: 1px solid #ccc; max-width: 600px; margin-left: auto; margin-right: auto;">
+        <h3>Direct Navigation Links (for testing)</h3>
+        <p>If the buttons above don't work, try these direct links:</p>
+        <ul>
+            <li><a href="blog-ai-adoption-arkansas.html">AI in Arkansas Business (Direct Link)</a></li>
+            <li><a href="blog-cybersecurity-best-practices.html">Cybersecurity Best Practices (Direct Link)</a></li>
+            <li><a href="blog-digital-transformation.html">Digital Transformation Stories (Direct Link)</a></li>
+        </ul>
+    </div>
+
+    <!-- Add this at the top of each blog post HTML file, right after <body> -->
+    <script>
+        // Check if we're in a frame or directly loaded
+        if (window.top === window.self) {
+            console.log("Blog post loaded directly - success!");
+        } else {
+            // Force direct navigation if somehow loaded in a frame
+            window.top.location = window.location;
+        }
+    </script>
+</body>
+</html> 

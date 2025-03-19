@@ -1,0 +1,8 @@
+# Add this to your .htaccess file if using Apache
+<IfModule mod_mime.c>
+    AddType text/html .html
+</IfModule>
+
+# Ensure proper directory browsing and index files
+DirectoryIndex index.html index.htm
+Options +Indexes 
